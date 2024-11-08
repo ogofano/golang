@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"bufio"
-	"os"
-	"regexp"
+	// "bufio"
+	// "os"
+	// "regexp"
 	"slices"
 	"strconv"
 )
@@ -68,6 +68,30 @@ func calculator(expression []string) []string {
 	return expression
 }
 
+func triangle(n int) {
+	if n <= 0 {
+		return
+	}
+	triangle := make([][]int, n)
+
+	for i := 0; i < n; i++ {
+		triangle[i] = make([]int, i+1)
+		triangle[i][0] = 1
+		triangle[i][i] = 1
+
+		for j := 1; j < i; j++ {
+			triangle[i][j] = triangle[i-1][j-1] + triangle[i-1][j]
+		}
+	}
+
+	for _, row := range triangle {
+		for _, value := range row {
+			fmt.Printf("%d ", value)
+		}
+		fmt.Println()
+	}
+}
+
 func main() {
 	// Решение для високосного года
 	// var year int
@@ -79,4 +103,11 @@ func main() {
 	// input, _ := reader.ReadString('\n')
 	// pattern := regexp.MustCompile("[()\\/*\\-+0-9]")
 	// fmt.Println(calculator(pattern.FindAllString(input, -1))[0])
+
+	// Решение треугольника Паскаля
+	// var n int
+	// fmt.Scan(&n)
+	// triangle(n)
+
+	
 }
