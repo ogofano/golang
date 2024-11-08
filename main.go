@@ -92,6 +92,21 @@ func triangle(n int) {
 	}
 }
 
+func longestCommonPrefix(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+
+	prefix := strs[0]
+	for _, str := range strs[1:] {
+		for len(prefix) > 0 && str[:len(prefix)] != prefix {
+			prefix = prefix[:len(prefix)-1]
+		}
+	}
+
+	return prefix
+}
+
 func main() {
 	// Решение для високосного года
 	// var year int
@@ -109,5 +124,17 @@ func main() {
 	// fmt.Scan(&n)
 	// triangle(n)
 
-	
+	// Решение с общим префиксом
+	// var n int
+	// fmt.Print("Введите количество строк: ")
+	// fmt.Scan(&n)
+
+	// strs := make([]string, n)
+	// fmt.Println("Введите строки:")
+	// for i := 0; i != n; i++ {
+	// 	fmt.Scan(&strs[i])
+	// }
+
+	// result := longestCommonPrefix(strs)
+	// fmt.Println("Самый длинный общий префикс:", result)
 }
